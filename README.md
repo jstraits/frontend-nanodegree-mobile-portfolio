@@ -1,3 +1,13 @@
+Optimizations made to index.html:
+- added media query to print.css
+- added link to Google Fonts for Open Sans
+- added async to analytics.js
+- replaced images in /img with grunt optimized images in /dist
+
+Added gruntfile.js and package.json:
+- used uglify plugin to minify js
+- used imagemin plugin to minimize images
+
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).

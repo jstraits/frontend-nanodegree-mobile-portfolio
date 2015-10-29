@@ -1,12 +1,14 @@
-Optimizations made to index.html:
-- added media query to print.css
-- added link to Google Fonts for Open Sans
-- added async to analytics.js
-- replaced images in /img with grunt optimized images in /dist
+Page found online at http://jstraits.github.io/frontend-nanodegree-mobile-portfolio/
 
-Added gruntfile.js and package.json:
+Optimizations made to index.html:
+
+- Added gruntfile.js and package.json
 - used uglify plugin to minify js
 - used imagemin plugin to minimize images
+- used responsive-images to optimize pizza images
+- modified css: body was used in 3 places, and all children would inherit, so combined into one body tag
+- used cssmin plugin to minify css
+- used inline-styles plugin to inline style sheets
 
 ## Website Performance Optimization portfolio project
 

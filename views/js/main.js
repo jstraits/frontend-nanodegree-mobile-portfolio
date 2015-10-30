@@ -472,8 +472,9 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+//moved var outside of function so it is only called once
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -504,15 +505,17 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-//Also changed from QuerySelectorAll to getElementsByClassName to increase speed
+//Moved out of for loop to only get called once
+//Also changed from querySelector
   var items = document.getElementsByClassName('mover');
+  var pizzaScroll = document.body.scrollTop;
+  var phase
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    phase = Math.sin((pizzaScroll / 1250) + (i % 5));
 	
-//suggested to use transform: translateX(); instead of style.left
-//.style.transform = "translateX(value)"  so for example "translateX(items[i].basicLeft + 100 * phase + 'px')"
-//
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+//used transform: translateX(); instead of style.left
+
+    items[i].style.transform = 'translateX(' + (items[i].basicLeft + 100) * phase + 'px)';	 
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.

@@ -1,6 +1,6 @@
 Page found online at http://jstraits.github.io/frontend-nanodegree-mobile-portfolio/
 
-Optimizations made to index.html:
+Optimizations made:
 
 - Added gruntfile.js and package.json
 - used uglify plugin to minify js
@@ -9,6 +9,7 @@ Optimizations made to index.html:
 - modified css: body was used in 3 places, and all children would inherit, so combined into one body tag
 - used cssmin plugin to minify css
 - used inline-styles plugin to inline style sheets
+- modified JS and CSS for pizza.html to optimize scrolling, comments in main.js
 
 ## Website Performance Optimization portfolio project
 

@@ -1,5 +1,7 @@
 Page found online at http://jstraits.github.io/frontend-nanodegree-mobile-portfolio/
 
+To run locally, open index.html
+
 Optimizations made:
 
 - Added gruntfile.js and package.json

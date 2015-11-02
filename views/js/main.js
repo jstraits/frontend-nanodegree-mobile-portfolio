@@ -453,11 +453,11 @@ var resizePizzas = function(size) {
   
   //Changed to getElementsByClassName instead of QuerySelectorAll, which is much faster.
   function changePizzaSizes(size) {
-  //Moved into its own variable out of the for loop
+  //Moved variables out of the for loop
     var pizzaCon = document.getElementsByClassName("randomPizzaContainer");
-	var dx = determineDx(pizzaCon[i], size);
+	var dx = determineDx(pizzaCon[0], size);
+	var newwidth = (pizzaCon[0].offsetWidth + dx) + 'px';
     for (var i = 0; i < pizzaCon.length; i++) {
-      var newwidth = (pizzaCon[i].offsetWidth + dx) + 'px';
       pizzaCon[i].style.width = newwidth;
     }
   }
@@ -516,8 +516,7 @@ function updatePositions() {
     phase = Math.sin((pizzaScroll / 1250) + (i % 5));
 	
 //used transform: translateX(); instead of style.left
-
-    items[i].style.transform = 'translateX(' + (items[i].basicLeft + 100) * phase + 'px)';	 
+    items[i].style.transform = 'translateX(' + 100 * phase + 'px)';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -537,13 +536,16 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 30; i++) {
+  //fixed here so it wasn't creating 200 pizzas
+  var pizzaNum = Math.round(window.innerHeight / s) * cols;
+  for (var i = 0; i < pizzaNum; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
+	//changed to go along with translateX
+    elem.style.left = (i % cols) * s + 'px';
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.getElementById("movingPizzas1").appendChild(elem);
 	//changed the querySelector here to getElementById
